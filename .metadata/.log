@@ -1,0 +1,122 @@
+!SESSION 2018-07-18 12:37:28.404 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/datnguyen/Develop/Web Application/StudenManagerMVC -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2018-07-18 12:41:07.952
+!MESSAGE cacheFile=file:/usr/lib/eclipse/configuration/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2018-07-18 12:42:01.560
+!MESSAGE cacheFile=file:/usr/lib/eclipse/configuration/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
+
+!ENTRY org.eclipse.ui.browser 2 0 2018-07-18 12:43:08.080
+!MESSAGE Internal browser is not available: No more handles [Unknown Mozilla path (MOZILLA_FIVE_HOME not set)]
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-07-18 13:47:04.246
+!MESSAGE Failed to download jre:jre:call:zip:1.0.0
+!STACK 0
+org.eclipse.aether.resolution.ArtifactResolutionException: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294)
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:192)
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:174)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:165)
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed(ArtifactTransportListener.java:43)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:355)
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$DirectExecutor.execute(BasicRepositoryConnector.java:581)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get(BasicRepositoryConnector.java:249)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:520)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421)
+	... 8 more
+Caused by: org.apache.http.client.HttpResponseException: Forbidden (403)
+	at org.eclipse.aether.transport.http.HttpTransporter.handleStatus(HttpTransporter.java:466)
+	at org.eclipse.aether.transport.http.HttpTransporter.execute(HttpTransporter.java:291)
+	at org.eclipse.aether.transport.http.HttpTransporter.implGet(HttpTransporter.java:243)
+	at org.eclipse.aether.spi.connector.transport.AbstractTransporter.get(AbstractTransporter.java:59)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$GetTaskRunner.runTask(BasicRepositoryConnector.java:447)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:350)
+	... 13 more
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 0 2018-07-18 13:47:04.249
+!MESSAGE jre:jre:call:zip:1.0.0 could not be resolved from the model repositories. Are you offline?
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-07-18 13:47:04.980
+!MESSAGE Failed to download jre:jre:call:zip:1.0.0
+!STACK 0
+org.eclipse.aether.resolution.ArtifactResolutionException: Failure to transfer jre:jre:zip:call:1.0.0-20150615.175205-1 from http://download.eclipse.org/recommenders/models/mars/ was cached in the local repository, resolution will not be reattempted until the update interval of models has elapsed or updates are forced. Original error: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294)
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:192)
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:174)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:165)
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Failure to transfer jre:jre:zip:call:1.0.0-20150615.175205-1 from http://download.eclipse.org/recommenders/models/mars/ was cached in the local repository, resolution will not be reattempted until the update interval of models has elapsed or updates are forced. Original error: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.newException(DefaultUpdateCheckManager.java:238)
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:206)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.gatherDownloads(DefaultArtifactResolver.java:585)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:503)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421)
+	... 8 more
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 0 2018-07-18 13:47:04.980
+!MESSAGE jre:jre:call:zip:1.0.0 could not be resolved from the model repositories. Are you offline?
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-07-18 13:47:07.914
+!MESSAGE Failed to download jre:jre:call:zip:1.0.0
+!STACK 0
+org.eclipse.aether.resolution.ArtifactResolutionException: Failure to transfer jre:jre:zip:call:1.0.0-20150615.175205-1 from http://download.eclipse.org/recommenders/models/mars/ was cached in the local repository, resolution will not be reattempted until the update interval of models has elapsed or updates are forced. Original error: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294)
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:192)
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:174)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:165)
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Failure to transfer jre:jre:zip:call:1.0.0-20150615.175205-1 from http://download.eclipse.org/recommenders/models/mars/ was cached in the local repository, resolution will not be reattempted until the update interval of models has elapsed or updates are forced. Original error: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.newException(DefaultUpdateCheckManager.java:238)
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:206)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.gatherDownloads(DefaultArtifactResolver.java:585)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:503)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421)
+	... 8 more
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 0 2018-07-18 13:47:07.917
+!MESSAGE jre:jre:call:zip:1.0.0 could not be resolved from the model repositories. Are you offline?
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-07-18 13:47:10.786
+!MESSAGE Failed to download jre:jre:call:zip:1.0.0
+!STACK 0
+org.eclipse.aether.resolution.ArtifactResolutionException: Failure to transfer jre:jre:zip:call:1.0.0-20150615.175205-1 from http://download.eclipse.org/recommenders/models/mars/ was cached in the local repository, resolution will not be reattempted until the update interval of models has elapsed or updates are forced. Original error: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294)
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:192)
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:174)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:165)
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Failure to transfer jre:jre:zip:call:1.0.0-20150615.175205-1 from http://download.eclipse.org/recommenders/models/mars/ was cached in the local repository, resolution will not be reattempted until the update interval of models has elapsed or updates are forced. Original error: Could not transfer artifact jre:jre:zip:call:1.0.0-20150615.175205-1 from/to models (http://download.eclipse.org/recommenders/models/mars/): Forbidden (403)
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.newException(DefaultUpdateCheckManager.java:238)
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:206)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.gatherDownloads(DefaultArtifactResolver.java:585)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:503)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421)
+	... 8 more
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 0 2018-07-18 13:47:10.787
+!MESSAGE jre:jre:call:zip:1.0.0 could not be resolved from the model repositories. Are you offline?
