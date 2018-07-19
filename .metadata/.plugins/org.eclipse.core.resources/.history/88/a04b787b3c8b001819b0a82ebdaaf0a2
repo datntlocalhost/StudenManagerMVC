@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+  <form action="<%=request.getContextPath()%>/show" method="post">
+    <label> MSSV: </label>
+    <input type="text" name="mssv">
+    <input type="submit" value="Xem" name="submit">
+  </form>
+  
+  <p>Thong tin sinh vien</p>
+  <%
+		String err = request.getParameter("err");
+		if ("1".equals(err)) {
+			out.print("<h4 style=\"color: red;\">Không có sinh viên này.</h4>");
+		}
+  %>
+  <table>
+    <tr>
+      <td>Họ tên: </td>
+      <td><%=request.getAttribute("Name")%></td>
+    </tr>
+    <tr>
+      <td>Ngày sinh: </td>
+      <td><%=request.getAttribute("BirthDay")%></td>
+    </tr>
+    <tr>
+      <td>Địa chỉ: </td>
+      <td><%=request.getAttribute("Address")%></td>
+    </tr>
+    <tr>
+      <td>Số điện thoại: </td>
+      <td><%=request.getAttribute("Phone")%></td>
+    </tr>
+    <tr>
+      <td>Email: </td>
+      <td><%=request.getAttribute("Email")%></td>
+    </tr>
+  </table>
+</body>
+</html>

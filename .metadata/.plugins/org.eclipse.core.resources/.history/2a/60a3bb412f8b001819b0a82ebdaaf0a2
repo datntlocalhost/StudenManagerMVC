@@ -1,0 +1,14 @@
+package datnt.runsystem.com.model;
+
+public class SubjectModel {
+	
+	private String id;
+	private String nameSubject;
+	
+	public SubjectModel(String id, String name) {
+		this.id = id;
+		this.nameSubject = name;
+	}
+	
+	
+}

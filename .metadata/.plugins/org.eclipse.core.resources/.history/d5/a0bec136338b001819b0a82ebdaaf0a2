@@ -1,0 +1,28 @@
+package datnt.runsystem.com.dao;
+
+import java.sql.Connection;
+
+import datnt.runsystem.com.model.StudentModel;
+
+public class FullInfoDAO {
+	
+	private static FullInfoDAO instance;
+	
+	private FullInfoDAO() {}
+	
+	public static FullInfoDAO getInstance() {
+		if (instance == null) {
+			instance = new FullInfoDAO();
+		}
+		return instance;
+	}
+	
+	public StudentModel getFullInfo(String mssv) {
+		StudentModel studentModel = null;
+		Connection connection = null;
+		
+		
+		return studentModel;
+	}
+
+}

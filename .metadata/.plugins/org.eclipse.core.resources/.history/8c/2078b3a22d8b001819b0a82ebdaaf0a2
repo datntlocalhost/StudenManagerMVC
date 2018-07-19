@@ -1,0 +1,7 @@
+package datnt.runsystem.com.features.showinfo;
+
+public class StudentInfo {
+	
+	private String name;
+
+}

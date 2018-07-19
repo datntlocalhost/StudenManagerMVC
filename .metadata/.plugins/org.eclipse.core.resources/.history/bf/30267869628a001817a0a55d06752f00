@@ -1,0 +1,9 @@
+package datnt.runsystem.com.features.login;
+
+public class UserModel {
+	
+	private String username;
+	private String password;
+	private int    permission;
+
+}
