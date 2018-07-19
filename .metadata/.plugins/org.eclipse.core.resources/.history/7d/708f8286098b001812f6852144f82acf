@@ -1,0 +1,14 @@
+package datnt.runsystem.com;
+
+import datnt.runsystem.com.features.login.AccountDAO;
+import datnt.runsystem.com.features.login.AccountModel;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		AccountDAO accountDAO = new AccountDAO();
+		AccountModel accountModel = accountDAO.getAccount("admin", "admin");
+	}
+
+}

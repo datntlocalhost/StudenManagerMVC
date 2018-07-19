@@ -1,0 +1,23 @@
+package datnt.runsystem.com.services;
+
+import datnt.runsystem.com.utils.Input;
+
+public class CheckInput {
+	
+	public static Input check(String input) {
+		char[] inArray = input.toCharArray();
+		
+		if (input.isEmpty()) {
+			return Input.EMPTY;
+		}
+		
+		for (char c : inArray) {
+			if (c == 10) {
+				return Input.BLANKSPACE;
+			}
+		}
+		
+		return Input.NORMAL;
+	}
+
+}

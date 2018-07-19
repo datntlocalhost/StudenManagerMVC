@@ -1,0 +1,6 @@
+package datnt.runsystem.com.features.showinfo;
+
+public class StudentModel {
+ 
+	private String name;
+}

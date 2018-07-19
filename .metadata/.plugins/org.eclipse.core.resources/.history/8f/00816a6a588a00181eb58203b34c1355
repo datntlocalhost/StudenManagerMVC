@@ -1,7 +1,0 @@
-package datnt.runsystem.com.features.login;
-
-import javax.servlet.http.HttpServlet;
-
-public class LoginController extends HttpServlet {
-
-}

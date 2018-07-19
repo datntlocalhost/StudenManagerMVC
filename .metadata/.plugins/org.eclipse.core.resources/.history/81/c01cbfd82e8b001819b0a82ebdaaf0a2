@@ -1,0 +1,13 @@
+package datnt.runsystem.com.model;
+
+public class StudentModel {
+	
+	private String id;
+	private String name;
+	private InfoModel info;
+	
+	public StudentModel(String id, String name, InfoModel info) {
+		
+	}
+
+}

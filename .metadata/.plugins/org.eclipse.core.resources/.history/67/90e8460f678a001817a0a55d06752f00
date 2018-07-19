@@ -1,0 +1,5 @@
+package datnt.runsystem.com.services;
+
+public class CheckUsername {
+
+}

@@ -1,0 +1,11 @@
+package datnt.runsystem.com.dao;
+
+public class ExecuteDB {
+	
+	private static ExecuteDB instance = null;
+	
+	private ExecuteDB() {}
+	
+	
+
+}
