@@ -1,0 +1,54 @@
+package datnt.runsystem.com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import datnt.runsystem.com.model.StudentModel;
+
+public class FullInfoDAO {
+	
+	private static FullInfoDAO instance;
+	
+	private FullInfoDAO() {}
+	
+	public static FullInfoDAO getInstance() {
+		if (instance == null) {
+			instance = new FullInfoDAO();
+		}
+		return instance;
+	}
+	
+	public StudentModel getFullInfo(String mssv) {
+		StudentModel      studentModel = null;
+		Connection        connection   = null;
+		ResultSet         resultSet    = null;
+		PreparedStatement preStatement = null;
+		
+		String sql = "";
+		try {
+			connection = ConnectionPool.getInstance().getDataSource().getConnection();
+			preStatement = connection.prepareStatement(sql);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (preStatement != null) {
+					preStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return studentModel;
+	}
+
+}

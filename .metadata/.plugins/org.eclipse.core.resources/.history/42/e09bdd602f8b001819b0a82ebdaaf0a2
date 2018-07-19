@@ -1,0 +1,12 @@
+package datnt.runsystem.com.model;
+
+public class FacultyModel {
+	
+	private String id;
+	private String nameFaculty;
+	
+	public FacultyModel(String id, String nameFaculty) {
+		
+	}
+
+}

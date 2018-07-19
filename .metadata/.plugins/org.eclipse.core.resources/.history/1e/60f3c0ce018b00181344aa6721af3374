@@ -1,0 +1,25 @@
+package datnt.runsystem.com.dao;
+
+import java.sql.ResultSet;
+
+public class ExecuteDB {
+	
+	private static ExecuteDB instance = null;
+	
+	private ExecuteDB() {}
+	
+	public static ExecuteDB getInstance() {
+		if (instance != null) {
+			instance = new ExecuteDB();
+		}
+		return instance;
+	}
+
+	public ResultSet executeQuery(String s) {
+		ResultSet resultSet = null;
+		
+		
+		
+		return resultSet;
+	}
+}

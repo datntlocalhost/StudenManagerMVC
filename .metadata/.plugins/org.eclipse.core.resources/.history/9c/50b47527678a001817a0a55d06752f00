@@ -1,0 +1,9 @@
+package datnt.runsystem.com.services;
+
+public class CheckInput {
+	
+	public static boolean checkUsername(String username) {
+		
+	}
+
+}

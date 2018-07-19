@@ -1,0 +1,20 @@
+package datnt.runsystem.com.services;
+
+import datnt.runsystem.com.utils.Input;
+
+public class CheckInput {
+	
+	public static Input check(String input) {
+		int i;
+		
+		if (input.isEmpty()) {
+			return Input.EMPTY;
+		}
+		
+		for (i = 0 ; i < input.length(); i++) {
+			
+		}
+		return Input.NORMAL;
+	}
+
+}

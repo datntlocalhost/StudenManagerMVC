@@ -1,0 +1,14 @@
+package datnt.runsystem.com.services;
+
+import datnt.runsystem.com.utils.Input;
+
+public class CheckInput {
+	
+	public static Input checkUsername(String input) {
+		int i;
+		
+		for (char s)
+		return Input.NORMAL;
+	}
+
+}

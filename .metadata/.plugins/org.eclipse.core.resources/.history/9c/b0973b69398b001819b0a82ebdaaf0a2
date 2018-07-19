@@ -1,0 +1,51 @@
+package datnt.runsystem.com.features.showinfo;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import datnt.runsystem.com.dao.FullInfoDAO;
+import datnt.runsystem.com.model.StudentModel;
+
+/**
+ * Servlet implementation class ShowController
+ */
+@WebServlet("/ShowController")
+public class ShowController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ShowController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mssv = request.getParameter("mssv");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/studenInfo.jsp");
+		
+		StudentModel studentModel = FullInfoDAO.getInstance().getFullInfo(mssv);
+		
+		if (studentModel != null) {
+			
+		}
+	}
+
+}

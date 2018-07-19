@@ -1,0 +1,18 @@
+package datnt.runsystem.com.dao;
+
+public class FullInfoDAO {
+	
+	private static FullInfoDAO instance;
+	
+	private FullInfoDAO() {}
+	
+	public static FullInfoDAO getInstance() {
+		if (instance == null) {
+			instance = new FullInfoDAO();
+		}
+		return instance;
+	}
+	
+	public 
+
+}

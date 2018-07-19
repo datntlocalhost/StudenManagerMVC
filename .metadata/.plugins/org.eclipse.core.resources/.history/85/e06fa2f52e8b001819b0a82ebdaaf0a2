@@ -1,0 +1,7 @@
+package datnt.runsystem.com.model;
+
+public class InfoModel {
+	
+	private String birthDay;
+	private String address;
+}
