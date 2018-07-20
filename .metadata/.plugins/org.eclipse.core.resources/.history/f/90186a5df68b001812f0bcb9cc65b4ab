@@ -1,0 +1,15 @@
+package datnt.runsystem.com.model;
+
+public class StudentModel {
+	
+	private static StudentModel instance;
+	
+	private StudentModel() {}
+	
+	public static StudentModel getInstance() {
+		if (instance == null) {
+			
+		}
+	}
+
+}

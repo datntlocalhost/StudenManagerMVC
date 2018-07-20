@@ -1,0 +1,28 @@
+package datnt.runsystem.com.model;
+
+import java.sql.Connection;
+
+import datnt.runsystem.com.dto.StudentDTO;
+import datnt.runsystem.com.utils.ConnectionPool;
+
+public class StudentModel {
+	
+	private static StudentModel instance;
+	
+	private StudentModel() {}
+	
+	public static StudentModel getInstance() {
+		if (instance == null) {
+			instance = new StudentModel();
+		}
+		return instance;
+	}
+	
+	public StudentDTO getStudentInfo(String id) {
+		StudentDTO student = null;
+		Connection conn = ConnectionPool.getInstance().getConnection();
+		
+		return student;
+	}
+
+}

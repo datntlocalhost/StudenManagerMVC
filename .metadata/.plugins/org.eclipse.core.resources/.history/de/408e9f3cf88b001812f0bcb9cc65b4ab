@@ -1,0 +1,58 @@
+<%@page import="datnt.runsystem.com.model.StudentModel"%>
+<%@page import="datnt.runsystem.com.dto.StudentDTO"%>
+<%@page import="java.sql.ResultSet"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="datnt.runsystem.com.dto.UserDTO" %>
+<%@ page import="datnt.runsystem.com.utils.GetPath" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Thông tin sinh viên</title>
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+</head>
+<body>
+  <%@ include file="header.jsp" %>
+  <%
+     StudentDTO student = StudentModel.getInstance().getStudentInfo(userDTO.getUsername());
+  %>
+  <div class="login-bg">
+    <div class="layer">
+      <% if (userDTO.getPermission() == 0 && ) {%>
+          <table>
+            <tr>
+              <td>Họ tên:</td>
+              <td><%=request.getAttribute("Name") %></td>
+            </tr>
+            <tr>
+              <td>Khoa:</td>
+              <td><%=request.getAttribute("Fac") %></td>
+            </tr>
+            <tr>
+              <td>Ngày sinh:</td>
+              <td><%=request.getAttribute("BirthDay") %></td>
+            </tr>
+            <tr>
+              <td>Địa chỉ:</td>
+              <td><%=request.getAttribute("Address") %></td>
+            </tr>
+            <tr>
+              <td>Số điện thoại:</td>
+              <td><%=request.getAttribute("Phone") %></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><%=request.getAttribute("Email") %></td>
+            </tr>
+          </table>
+      <%} else {%>
+      
+      <%}%>
+    </div>
+  </div>
+  
+  <%@ include file="footer.jsp" %>
+</body>
+</html>

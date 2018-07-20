@@ -1,0 +1,11 @@
+package datnt.runsystem.com.utils;
+
+public class GetPath {
+	
+	public static String HEADER_VIEW = "/view/header.jsp";
+	public static String FOOTER_VIEW = "/view/footer.jsp";
+	public static String HOME_VIEW = "/view/home.jsp";
+	public static String LOGIN_VIEW = "/login.jsp";
+	
+	
+}

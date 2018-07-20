@@ -1,0 +1,11 @@
+package datnt.runsystem.com.model;
+
+public class SubjectModel {
+	
+	private static SubjectModel instance;
+	
+	private SubjectModel() {}
+	
+	
+
+}
