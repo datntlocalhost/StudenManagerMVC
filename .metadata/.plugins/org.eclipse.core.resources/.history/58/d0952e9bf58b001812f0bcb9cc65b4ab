@@ -1,0 +1,18 @@
+package datnt.runsystem.com.dto;
+
+public class SubjectDTO {
+	
+	private String idSubject;        //mã môn học
+	private String nameSubject;      //tên môn học
+	private String year;             //năm học
+	private int    semester;         //học kì
+	private float  qtScores;         //điểm quá trình
+	private float  thScores;         //điểm thực hành
+	private float  gkScores;         //điểm giữa kỳ
+	private float  ckScores;         //điểm cuối kỳ 
+	
+	public SubjectDTO(String idSubject, String nameSubject, String year, int semester) {
+		
+	}
+
+}

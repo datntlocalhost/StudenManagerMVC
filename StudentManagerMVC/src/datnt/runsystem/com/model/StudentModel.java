@@ -1,58 +1,70 @@
 package datnt.runsystem.com.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import datnt.runsystem.com.dto.StudentDTO;
+import datnt.runsystem.com.utils.ConnectionPool;
+
 public class StudentModel {
 	
-	private String id;
-	private String name;
-	private InfoModel info;
-	private FacultyModel faculty;
-	private SubjectModel subject;
+	private static StudentModel instance;
 	
-	public StudentModel(String id, String name, InfoModel info, FacultyModel faculty, SubjectModel sub) {
-		this.id   = id;
-		this.name = name;
-		this.info = info;
-		this.faculty = faculty;
-		this.subject = sub;
+	private StudentModel() {}
+	
+	public static StudentModel getInstance() {
+		if (instance == null) {
+			instance = new StudentModel();
+		}
+		return instance;
+	}
+	
+	public StudentDTO getStudentInfo(String id) {
+		StudentDTO student = null;
+		Connection conn = null;
+		ResultSet  result = null;
+		PreparedStatement preStatement = null;
+		
+		String sql = "SELECT SV.MSSV, K.TENKHOA, SV.HOTEN, LL.NGAYSINH, LL.DIACHI, LL.SDT, LL.EMAIL "
+				+ "FROM SINHVIEN SV, LYLICH LL, KHOA K "
+				+ "WHERE SV.ID=LL.ID AND SV.MAKHOA=K.MAKHOA AND SV.MSSV=?;";
+		try {
+			conn = ConnectionPool.getInstance().getConnection();
+			preStatement = conn.prepareStatement(sql);
+			preStatement.setString(1, id);
+			result = preStatement.executeQuery();
+			
+			if (result.next()) {
+				String mssv     = result.getString(1);
+				String faculty  = result.getString(2);
+				String name     = result.getString(3);
+				String birthday = result.getString(4);
+				String address  = result.getString(5);
+				String phone    = result.getString(6);
+				String email    = result.getString(7);
+				
+				student = new StudentDTO(id, name, faculty, birthday, address, phone, email);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) {
+					result.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return student;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public InfoModel getInfo() {
-		return info;
-	}
-
-	public void setInfo(InfoModel info) {
-		this.info = info;
-	}
-
-	public FacultyModel getFaculty() {
-		return faculty;
-	}
-
-	public void setFaculty(FacultyModel faculty) {
-		this.faculty = faculty;
-	}
-
-	public SubjectModel getSubject() {
-		return subject;
-	}
-
-	public void setSubject(SubjectModel subject) {
-		this.subject = subject;
-	}
 }

@@ -1,0 +1,11 @@
+#database
+hostname=localhost
+port=3306
+dbname=StudenManagerDB
+url=jdbc:mysql://{0}:{1}/{2}?autoReconnect=true&useSSL=false
+username=datnt
+password=
+
+#connection pool
+maxactive=10
+

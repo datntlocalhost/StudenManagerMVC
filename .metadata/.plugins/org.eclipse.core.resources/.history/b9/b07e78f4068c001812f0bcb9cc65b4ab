@@ -1,0 +1,62 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="datnt.runsystem.com.dto.SubjectDTO"%>
+<%@page import="datnt.runsystem.com.model.StudentModel"%>
+<%@page import="datnt.runsystem.com.dto.StudentDTO"%>
+<%@page import="java.sql.ResultSet"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="datnt.runsystem.com.dto.UserDTO" %>
+<%@ page import="datnt.runsystem.com.utils.GetPath" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Thông tin sinh viên</title>
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
+</head>
+<body>
+  <%@ include file="header.jsp" %>
+  
+  <% 
+     StudentDTO student = null;
+     ArrayList<SubjectDTO> subjects = new ArrayList<SubjectDTO>();
+     if (userDTO != null) {
+    	 student = StudentModel.getInstance().getStudentInfo(userDTO.getUsername());
+    	 
+     }
+  %>
+  
+  <div class="login-bg">
+    <div class="layer">
+          <table class="table-info">
+            <tr>
+              <td class="td-1">Họ tên:</td>
+              <td class="td-2"><%=student.getName() %></td>
+            </tr>
+            <tr>
+              <td class="td-1">Khoa:</td>
+              <td class="td-2"><%=student.getFaculty() %></td>
+            </tr>
+            <tr>
+              <td class="td-1">Ngày sinh:</td>
+              <td class="td-2"><%=student.getBirthday() %></td>
+            </tr>
+            <tr>
+              <td class="td-1">Địa chỉ:</td>
+              <td class="td-2"><%=student.getAddress() %></td>
+            </tr>
+            <tr>
+              <td class="td-1">Số điện thoại:</td>
+              <td class="td-2"><%=student.getPhone() %></td>
+            </tr>
+            <tr>
+              <td class="td-1">Email:</td>
+              <td class="td-2"><%=student.getEmail() %></td>
+            </tr>
+          </table>
+    </div>
+  </div>
+  <%@ include file="footer.jsp" %>
+</body>
+</html>

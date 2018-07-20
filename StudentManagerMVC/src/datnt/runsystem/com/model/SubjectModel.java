@@ -1,94 +1,73 @@
 package datnt.runsystem.com.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import datnt.runsystem.com.dto.SubjectDTO;
+import datnt.runsystem.com.utils.ConnectionPool;
+
 public class SubjectModel {
 	
-	private String id;
-	private String nameSubject;
-	private String year;
-	private String semester;
-	private float  qtScores;
-	private float  thScores;
-	private float  gkScores;
-	private float  ckScores;
+	private static SubjectModel instance;
 	
-	public SubjectModel() {
+	private SubjectModel() {}
+	
+	public static SubjectModel getInstance() {
+		if (instance == null) {
+			instance = new SubjectModel();
+		}
+		return instance;
+	}
+	
+	public ArrayList<SubjectDTO> getSubject(String id) {
+		ArrayList<SubjectDTO> subjects  = new ArrayList<SubjectDTO>();
+		Connection            conn      = null;
+		ResultSet             result    = null;
+		PreparedStatement     preState  = null;
 		
+		String sql = "SELECT MH.MAMH, MH.TENMH, CT.NAMHOC, CT.HOCKY, CT.DIEMQT, CT.DIEMTH, CT.DIEMGK, CT.DIEMCK "
+				+ "FROM CHITIETMONHOC CT, MONHOC MH "
+				+ "WHERE CT.MAMH=MH.MAMH AND CT.MSSV=?";
+		try {
+			conn = ConnectionPool.getInstance().getConnection();
+			preState = conn.prepareStatement(sql);
+			preState.setString(1, id);
+			result = preState.executeQuery();
+			
+			while (result.next()) {
+				String idSubject   = result.getString(1);
+				String nameSubject = result.getString(2);
+				String year        = result.getString(3);
+				int semester       = result.getInt(4);
+				float qtScores     = result.getFloat(5);
+				float thScores     = result.getFloat(6);
+				float gkScores     = result.getFloat(7);
+				float ckScores     = result.getFloat(8);
+				
+				subjects.add(new SubjectDTO(idSubject, nameSubject, year, semester, qtScores, thScores, gkScores, ckScores));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) {
+					result.close();
+				}
+				if (preState != null) {
+					preState.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		return subjects;
 	}
 
-	public SubjectModel(String id, String nameSubject, String year, String semester, float qtScores, float thScores,
-			float gkScores, float ckScores) {
-		super();
-		this.id = id;
-		this.nameSubject = nameSubject;
-		this.year = year;
-		this.semester = semester;
-		this.qtScores = qtScores;
-		this.thScores = thScores;
-		this.gkScores = gkScores;
-		this.ckScores = ckScores;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getNameSubject() {
-		return nameSubject;
-	}
-
-	public void setNameSubject(String nameSubject) {
-		this.nameSubject = nameSubject;
-	}
-
-	public String getYear() {
-		return year;
-	}
-
-	public void setYear(String year) {
-		this.year = year;
-	}
-
-	public String getSemester() {
-		return semester;
-	}
-
-	public void setSemester(String semester) {
-		this.semester = semester;
-	}
-
-	public float getQtScores() {
-		return qtScores;
-	}
-
-	public void setQtScores(float qtScores) {
-		this.qtScores = qtScores;
-	}
-
-	public float getThScores() {
-		return thScores;
-	}
-
-	public void setThScores(float thScores) {
-		this.thScores = thScores;
-	}
-
-	public float getGkScores() {
-		return gkScores;
-	}
-
-	public void setGkScores(float gkScores) {
-		this.gkScores = gkScores;
-	}
-
-	public float getCkScores() {
-		return ckScores;
-	}
-
-	public void setCkScores(float ckScores) {
-		this.ckScores = ckScores;
-	}
 }
