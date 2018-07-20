@@ -1,0 +1,64 @@
+package datnt.runsystem.com.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import datnt.runsystem.com.dto.StudentDTO;
+import datnt.runsystem.com.utils.ConnectionPool;
+
+public class StudentModel {
+	
+	private static StudentModel instance;
+	
+	private StudentModel() {}
+	
+	public static StudentModel getInstance() {
+		if (instance == null) {
+			instance = new StudentModel();
+		}
+		return instance;
+	}
+	
+	public StudentDTO getStudentInfo(String id) {
+		StudentDTO student = null;
+		Connection conn = null;
+		ResultSet  result = null;
+		PreparedStatement preStatement = null;
+		
+		String sql = "SELECT SV.MSSV, K.TENKHOA, SV.HOTEN, LL.NGAYSINH, LL.DIACHI, LL.SDT, LL.EMAIL "
+				+ "FROM SINHVIEN SV, LYLICH LL, KHOA K "
+				+ "WHERE SV.ID=LL.ID AND SV.MAKHOA=K.MAKHOA AND SV.MSSV=?;";
+		try {
+			conn = ConnectionPool.getInstance().getConnection();
+			preStatement = conn.prepareStatement(sql);
+			preStatement.setString(1, id);
+			result = preStatement.executeQuery();
+			
+			if (result.next()) {
+				String ms = 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) {
+					result.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		
+		return student;
+	}
+
+}

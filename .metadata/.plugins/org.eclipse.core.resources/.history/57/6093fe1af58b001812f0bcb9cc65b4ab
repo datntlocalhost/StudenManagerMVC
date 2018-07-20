@@ -1,0 +1,9 @@
+package datnt.runsystem.com.dto;
+
+public class SubjectDTO {
+	
+	private String idSubject;
+	private String nameSubject;
+	private String year;
+
+}
