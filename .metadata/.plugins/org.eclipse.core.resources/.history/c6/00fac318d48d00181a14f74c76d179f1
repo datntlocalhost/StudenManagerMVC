@@ -1,0 +1,16 @@
+package datnt.runsystem.com.utils;
+
+import java.sql.Date;
+import java.util.Calendar;
+
+public class DateUtility {
+	
+	public static String[] getYearSemester() {
+		String[] string = new String[2];
+		
+		Calendar date = Calendar.getInstance();
+		
+		return string;
+	}
+
+}

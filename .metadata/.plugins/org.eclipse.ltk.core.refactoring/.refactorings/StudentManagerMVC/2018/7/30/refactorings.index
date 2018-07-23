@@ -1,0 +1,9 @@
+1532247412648	Move 'showinfo.jsp' to 'ctl'
+1532247415093	Move 'updateinfo.jsp' to 'ctl'
+1532251514042	Rename resource 'ctl'
+1532251548370	Rename type 'PageFilter'
+1532253322366	Delete element
+1532253961214	Move compilation unit
+1532253968595	Move compilation unit
+1532276632351	Rename type 'SubjectDTO'
+1532277511150	Rename resource 'regis.jsp'

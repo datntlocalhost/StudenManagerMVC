@@ -11,8 +11,6 @@ import javax.servlet.http.HttpSession;
 import datnt.runsystem.com.dto.UserDTO;
 import datnt.runsystem.com.model.UserModel;
 
-
-@WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,9 +18,7 @@ public class LoginController extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Begin doGet LoginController");
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String      operation = request.getParameter("operation");
 		HttpSession session   = request.getSession();
 		
@@ -30,7 +26,6 @@ public class LoginController extends HttpServlet {
 			if (operation.equalsIgnoreCase("logout")) {
 				session.invalidate();
 				response.sendRedirect(request.getContextPath() + "/view/home.jsp");
-				System.out.println("End doGet LoginController");
 				return;
 			}
 		} else {
@@ -41,8 +36,6 @@ public class LoginController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("Begin doPost LoginController");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
@@ -59,8 +52,6 @@ public class LoginController extends HttpServlet {
 		} else {
 			response.sendRedirect(request.getContextPath() + "/view/login.jsp");
 		}
-		
-		System.out.println("End doPost LoginController");
 	}
 
 }

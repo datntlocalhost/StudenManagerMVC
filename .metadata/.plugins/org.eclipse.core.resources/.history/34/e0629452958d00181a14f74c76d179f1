@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>StudentManagerMVC</display-name>
+  <welcome-file-list>
+    <welcome-file>view/home.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>PageFilter</filter-name>
+    <filter-class>datnt.runsystem.com.controllers.StudentPageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PageFilter</filter-name>
+    <url-pattern>/view/student/*</url-pattern>
+  </filter-mapping>
+  
+   <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/ctl/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateInfo</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.UpdateInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateInfo</servlet-name>
+    <url-pattern>/ctl/updateinfo</url-pattern>
+  </servlet-mapping>
+</web-app>

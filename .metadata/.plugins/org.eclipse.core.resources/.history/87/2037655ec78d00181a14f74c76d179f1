@@ -1,0 +1,6 @@
+package datnt.runsystem.com.model;
+
+public class FacultyModel {
+	
+	private static FacultyModel instance; 
+}

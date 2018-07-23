@@ -29,7 +29,7 @@
      <img alt="uit-icon" src="<%=request.getContextPath()%>/imgs/logo-uit.png">
    </div>
    <% if (isLoggedIn) {%>
-        <form action="<%=request.getContextPath()%>/LoginController" method="get">
+        <form action="<%=request.getContextPath()%>/ctl/login" method="get">
           <input type="hidden" name="operation" value="logout">
           <button class="login-btn" type="submit" name="logout" >Logout</button>
         </form> 
@@ -38,21 +38,21 @@
         
         <% if (userDTO.getPermission() == 0) {%>
           <ul class="menu">
-             <li><a href="<%=request.getContextPath() %>/view/showinfo.jsp">Xem thông tin</a></li>
-             <li><a href="">Cập nhật lý lịch</a></li>
-             <li><a href="">Đăng ký môn học</a></li>
+             <li><a href="<%=request.getContextPath()+GetPath.SHOW_INFO_VIEW%>">Xem thông tin</a></li>
+             <li><a href="<%=request.getContextPath()+GetPath.UPDATE_INFO_VIEW%>">Cập nhật lý lịch</a></li>
+             <li><a href="<%=request.getContextPath()+GetPath.RES_SUBJECT_VIEW%>">Đăng ký môn học</a></li>
           </ul> 
         <%} else {%>
           <ul class="menu">
-             <li><a href="<%=request.getContextPath() %>/view/showinfo.jsp">Xem thông tin</a></li>
-             <li><a href="">Thêm sinh viên</a></li>
+             <li><a href="<%=request.getContextPath()%>/view/admin/studentinfo.jsp">Xem thông tin</a></li>
+             <li><a href="<%=request.getContextPath()%>/view/admin/addstudent.jsp">Thêm sinh viên</a></li>
              <li><a href="">Cập nhật điểm</a></li>
              <li><a href=""></a></li>
           </ul>
         <%}%>
         
    <%} else {%>
-        <form action="<%=request.getContextPath()%>/LoginController" method="get">
+        <form action="<%=request.getContextPath()%>/ctl/login" method="get">
           <input type="hidden" name="operation" value="login">
           <button class="login-btn" type="submit" name="login" >Login</button>
         </form> 

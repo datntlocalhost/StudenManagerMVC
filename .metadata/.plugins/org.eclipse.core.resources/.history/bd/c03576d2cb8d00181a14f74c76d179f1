@@ -1,0 +1,15 @@
+package datnt.runsystem.com.dto;
+
+public class SubjectDTO {
+	
+	private String idSubject;
+	private String nameSubject;
+	
+	public SubjectDTO(String idSubject, String nameSubject) {
+		this.idSubject   = idSubject;
+		this.nameSubject = nameSubject;
+	}
+	
+	
+
+}

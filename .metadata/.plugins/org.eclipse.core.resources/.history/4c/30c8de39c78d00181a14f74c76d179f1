@@ -1,0 +1,15 @@
+package datnt.runsystem.com.dto;
+
+public class FacultyDTO {
+	
+	private String idFaculty;
+	private String nameFaculty;
+	
+	public FacultyDTO(String id, String name) {
+		this.idFaculty   = id;
+		this.nameFaculty = name;
+	}
+	
+	
+
+}
