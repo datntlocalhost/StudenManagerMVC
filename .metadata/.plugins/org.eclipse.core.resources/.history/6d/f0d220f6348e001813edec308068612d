@@ -1,0 +1,58 @@
+package datnt.runsystem.com.utils;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.jws.soap.SOAPBinding;
+
+import datnt.runsystem.com.dto.UserDTO;
+import datnt.runsystem.com.model.UserModel;
+
+public class StringValidator {
+	
+	public static boolean usernameValid(String username) {
+		
+		return true;
+	}
+	
+	public static float scoresValid(String scores) {
+		if (scores == null || scores.isEmpty()) {
+			return 0;
+		}
+		return Float.parseFloat(scores);
+	}
+	
+	public static void main(String[] args) {
+		Connection conn = null;
+		PreparedStatement preStatement = null;
+		
+		String sql = "UPDATE CHITIETMONHOC "
+				   + "SET ?=?,"
+				   + "WHERE MSSV=? AND MAMH=?;";
+		try {
+			conn = ConnectionPool.getInstance().getConnection();
+			preStatement = conn.prepareStatement(sql);
+			preStatement.setString(1, "DIEMQT");
+			preStatement.setFloat(2, (float) 1.0);
+			preStatement.setString(3, "13520203");
+			preStatement.setString(4, "MA001");
+		
+			System.out.println(preStatement.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preStatement != null) {
+					preStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
+}

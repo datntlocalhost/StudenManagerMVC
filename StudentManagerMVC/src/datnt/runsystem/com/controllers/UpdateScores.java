@@ -1,0 +1,77 @@
+package datnt.runsystem.com.controllers;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import datnt.runsystem.com.dto.SubjectInfoDTO;
+import datnt.runsystem.com.model.SubjectModel;
+import datnt.runsystem.com.utils.GetPath;
+import datnt.runsystem.com.utils.StringValidator;
+
+
+public class UpdateScores extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public UpdateScores() {
+        super();
+    }
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(GetPath.UPDATE_SCORES_VIEW);
+		rd.forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idStudent = request.getParameter("idStudent");
+		String idSubject = request.getParameter("idSubject");
+		String type      = request.getParameter("type");
+		
+		if (idStudent != null && idSubject != null) {
+			if (type.equalsIgnoreCase("getinfo")) {
+				SubjectInfoDTO subjectInfoDTO = SubjectModel.getInstance().getSubject(idStudent, idSubject);
+			
+				if (subjectInfoDTO != null) {
+					request.setAttribute("subjectinfo", subjectInfoDTO);
+					request.setAttribute("idstudent", idStudent);
+					request.setAttribute("idsubject", idSubject);
+				}
+			}
+		}
+		
+		if (type.equalsIgnoreCase("updatescores")) {
+			//goi update
+			float qtScores = StringValidator.scoresValid(request.getParameter("qtscores"));
+			float thScores = StringValidator.scoresValid(request.getParameter("thscores"));
+			float gkScores = StringValidator.scoresValid(request.getParameter("gkscores"));
+			float ckScores = StringValidator.scoresValid(request.getParameter("ckscores"));
+			
+			String idStudent2 = request.getParameter("idStudent");
+			String idSubject2 = request.getParameter("idSubject");
+			
+			if (qtScores >= 0 && qtScores <= 10.0) {
+				SubjectModel.getInstance().updateScores(idStudent2, idSubject2, qtScores, "DIEMQT");
+			}
+			if (thScores >= 0 && thScores <= 10.0) {
+				SubjectModel.getInstance().updateScores(idStudent2, idSubject2, thScores, "DIEMTH");
+			}
+			if (gkScores >= 0 && gkScores <= 10.0) {
+				SubjectModel.getInstance().updateScores(idStudent2, idSubject2, gkScores, "DIEMGK");
+			}
+			if (ckScores >= 0 && ckScores <= 10.0) {
+				SubjectModel.getInstance().updateScores(idStudent2, idSubject2, ckScores, "DIEMCK");
+			}
+			request.setAttribute("message", "success");
+		}
+		//tra data ve browser
+		doGet(request, response);
+	}
+
+}

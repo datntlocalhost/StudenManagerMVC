@@ -12,7 +12,7 @@
    
    <div class="login-bg">
      <div class="layer">
-     <form class="login-form" action="<%=request.getContextPath()%>/LoginController" method="post">
+     <form class="login-form" action="<%=request.getContextPath()%>/ctl/login" method="post">
         <label> Username: </label>
         <input type="text" name="username"> <br>
         <label> Password: </label>

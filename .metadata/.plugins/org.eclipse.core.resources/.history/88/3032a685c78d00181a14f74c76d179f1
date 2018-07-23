@@ -1,0 +1,23 @@
+package datnt.runsystem.com.model;
+
+import java.util.ArrayList;
+
+import datnt.runsystem.com.dto.FacultyDTO;
+
+public class FacultyModel {
+	
+	private static FacultyModel instance;
+	
+	private FacultyModel() {}
+	
+	public static FacultyModel getInstance() {
+		if (instance == null) {
+			instance = new FacultyModel();
+		}
+		return instance;
+	}
+	
+	public ArrayList<FacultyDTO> getFaculties() {
+		ArrayList<FacultyDTO> faculties = new ArrayList<>();
+	}
+}

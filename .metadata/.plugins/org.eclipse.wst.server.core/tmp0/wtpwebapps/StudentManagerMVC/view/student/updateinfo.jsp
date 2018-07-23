@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="datnt.runsystem.com.utils.GetPath" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+  <%@ include file="../header.jsp" %>
+  
+  <main>
+    <h1>Cập nhật thông tin sinh viên</h1>
+    <%
+       String message = request.getParameter("message");
+       if ("success".equalsIgnoreCase(message)) {
+    	   out.print("<h4 style=\"color: blue;\">Cập nhật thành công</h4>");
+       } else if ("failed".equalsIgnoreCase(message)) {
+    	   out.print("<h4 style=\"color: red;\">Cập nhật thất bại thất bại</h4>");
+       }
+    %>
+     <form action="<%=request.getContextPath() %>/ctl/updateinfo" method="post">
+       <label>Địa chỉ</label>
+       <input type="text" name="address">
+       <br>
+       <label>Số điện thoại:</label>
+       <input type="text" name="phone">
+       <br>
+       <label>Email:</label>
+       <input type="text" name="email">
+       <br>
+       <input type="submit" value="Cập nhật" name="submit">
+     </form>
+  </main>  
+  <%@ include file="../footer.jsp" %>
+</body>
+</html>

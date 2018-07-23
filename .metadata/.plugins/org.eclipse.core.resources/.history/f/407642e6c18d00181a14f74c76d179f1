@@ -1,0 +1,62 @@
+package datnt.runsystem.com.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import datnt.runsystem.com.utils.ConnectionPool;
+
+public class AddStudentModel {
+	
+	private static AddStudentModel instance;
+	
+	private AddStudentModel() {}
+	
+	public static AddStudentModel getInstance() {
+		if (instance == null) {
+			instance = new AddStudentModel();
+		}
+		return instance;
+	}
+	
+	public boolean addStudent(String idStudent, String idFaculty, String studentName) {
+		boolean isSuccess = false;
+		Connection conn = null;
+		ResultSet  result = null;
+		PreparedStatement preStatement = null;
+		
+		String sql = "INSERT INTO SINHVIEN(MSSV, MAKHOA, HOTEN VALUES(?,?,?);";
+		try {
+			conn = ConnectionPool.getInstance().getConnection();
+			preStatement = conn.prepareStatement(sql);
+			preStatement.setString(1, idStudent);
+			preStatement.setString(2, idFaculty);
+			preStatement.setString(3, studentName);
+			isSuccess = preStatement.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) {
+					result.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+				if (result != null) {
+					result.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}	
+		return isSuccess;
+	}
+	
+	public boolean addAccount(String idStudent, String password) {
+		boolean isSuccess = false;
+		Connection conn = null;
+	}
+
+}

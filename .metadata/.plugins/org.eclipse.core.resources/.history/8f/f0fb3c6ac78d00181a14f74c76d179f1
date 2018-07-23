@@ -1,0 +1,15 @@
+package datnt.runsystem.com.model;
+
+public class FacultyModel {
+	
+	private static FacultyModel instance;
+	
+	private FacultyModel() {}
+	
+	public static FacultyModel getInstance() {
+		if (instance == null) {
+			instance = new FacultyModel();
+		}
+		return instance;
+	}
+}
