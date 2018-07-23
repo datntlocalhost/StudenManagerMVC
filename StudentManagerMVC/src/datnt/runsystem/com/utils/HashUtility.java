@@ -1,12 +1,5 @@
 package datnt.runsystem.com.utils;
 
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import datnt.runsystem.com.dto.UserDTO;
-import datnt.runsystem.com.model.UserModel;
 
 public class HashUtility {
 	
@@ -22,11 +15,4 @@ public class HashUtility {
 		}*/
 		return s;
 	}
-	
-	/*Test
-	public static void main(String[] args) {
-			
-		System.out.println(hash("123"));
-	}
-    */
 }

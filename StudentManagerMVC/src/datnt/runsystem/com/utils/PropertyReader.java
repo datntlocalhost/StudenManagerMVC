@@ -8,6 +8,5 @@ public class PropertyReader {
 	
 	public static String getValue(String key) {
 		return resourceBundle.getString(key);
-	}
-	
+	}	
 }

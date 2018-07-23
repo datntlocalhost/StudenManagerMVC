@@ -4,6 +4,11 @@ import java.util.Calendar;
 
 public class DateUtility {
 	
+	/*
+	 * Lấy thời gian năm học và học kỳ
+	 * 
+	 * @return String[]
+	 */
 	public static String[] getYearSemester() {
 		String[] string = new String[2];
 		
@@ -12,8 +17,10 @@ public class DateUtility {
 		int month = calendar.get(Calendar.MONTH);
 		int year  = calendar.get(Calendar.YEAR);
 		
+		//năm học vd 2017-2018
 		string[0] = year + "-" + (year + 1);
 		
+		//trong tháng 6 - 8 là học kỳ 3
 		if (month >= 6 && month < 8) {
 			string[1] = "3";
 		} else if (month >= 8 && month < 12) {
@@ -23,11 +30,4 @@ public class DateUtility {
 		}
 		return string;
 	}
-	
-	public static void main(String[] args) {
-		
-		String[] asd = getYearSemester();
-		System.out.println(asd[0] + "  " + asd[1]);
-	}
-
 }

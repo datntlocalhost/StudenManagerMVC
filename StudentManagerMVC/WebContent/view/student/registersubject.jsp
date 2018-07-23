@@ -13,6 +13,13 @@
   <%@ include file="../header.jsp" %>
   <%
   	ArrayList<SubjectDTO> subjects = SubjectModel.getInstance().getSubjects();
+    ArrayList<String> s = (ArrayList<String>) request.getAttribute("alehap");
+    if (s != null) {
+    	out.print("<h2>Đã đăng ký thành công</h2>");
+    	for (int i = 0; i < s.size(); i++) {
+    		out.print(s.get(i) + "<br>");
+    	}
+    }
   %>
   <div>
     <form action="<%=request.getContextPath()%>/ctl/registersubject" method="post">

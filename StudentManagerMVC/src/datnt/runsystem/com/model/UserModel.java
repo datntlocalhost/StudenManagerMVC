@@ -22,7 +22,15 @@ public class UserModel {
 		return instance;
 	}
 	
-	public UserDTO checkLogin(String username, String password) {
+	/*
+	 * Lấy thông tin tài khoản.
+	 * 
+	 * @param username 
+	 * @param password
+	 * 
+	 * @return UserDTO  Trả về một đối tượng UserDTO 
+	 * */
+	public UserDTO getUser(String username, String password) {
 		UserDTO userDTO            = null;
 		Connection conn            = null;
 		ResultSet  result          = null;

@@ -1,0 +1,23 @@
+package datnt.runsystem.com.utils;
+
+import datnt.runsystem.com.dto.UserDTO;
+import datnt.runsystem.com.model.UserModel;
+
+public class StringValidator {
+	
+	public static boolean usernameValid(String username) {
+		
+		return true;
+	}
+	
+	public static float scoresValid(String scores) {
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		float f = Float.valueOf("a");
+		System.out.println(f);
+	}
+
+}

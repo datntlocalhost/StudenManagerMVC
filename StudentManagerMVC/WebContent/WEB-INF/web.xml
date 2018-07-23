@@ -44,7 +44,6 @@
     <servlet-name>StudentInfo</servlet-name>
     <url-pattern>/ctl/studentinfo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddStudent</servlet-name>
     <servlet-class>datnt.runsystem.com.controllers.AddStudent</servlet-class>
@@ -54,12 +53,21 @@
     <url-pattern>/ctl/addstudent</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
     <servlet-name>RegisterSubject</servlet-name>
     <servlet-class>datnt.runsystem.com.controllers.RegisterSubject</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RegisterSubject</servlet-name>
     <url-pattern>/ctl/registersubject</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>UpdateScores</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.UpdateScores</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateScores</servlet-name>
+    <url-pattern>/ctl/updatescores</url-pattern>
   </servlet-mapping>
 </web-app>

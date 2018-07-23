@@ -44,9 +44,9 @@
           </ul> 
         <%} else {%>
           <ul class="menu">
-             <li><a href="<%=request.getContextPath()%>/view/admin/studentinfo.jsp">Xem thông tin</a></li>
-             <li><a href="<%=request.getContextPath()%>/view/admin/addstudent.jsp">Thêm sinh viên</a></li>
-             <li><a href="">Cập nhật điểm</a></li>
+             <li><a href="<%=request.getContextPath() + GetPath.STUDENT_INFO_VIEW%>">Xem thông tin</a></li>
+             <li><a href="<%=request.getContextPath() + GetPath.ADD_STUDENT_VIEW%>">Thêm sinh viên</a></li>
+             <li><a href="<%=request.getContextPath() + GetPath.UPDATE_SCORES_VIEW%>">Cập nhật điểm</a></li>
              <li><a href=""></a></li>
           </ul>
         <%}%>
