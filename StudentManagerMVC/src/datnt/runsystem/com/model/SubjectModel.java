@@ -1,3 +1,8 @@
+/*
+ * Class SubjectModel 
+ * 
+ * Chứa các phương thức lấy thông tin của môn học từ database 
+ */
 package datnt.runsystem.com.model;
 
 import java.sql.Connection;

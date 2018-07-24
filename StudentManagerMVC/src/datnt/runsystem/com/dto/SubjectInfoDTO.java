@@ -1,3 +1,9 @@
+/*
+ * Class SubjectInfoDTO
+ * 
+ * Đối tượng Chi tiết môn học
+ */
+
 package datnt.runsystem.com.dto;
 
 public class SubjectInfoDTO {

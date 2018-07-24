@@ -8,7 +8,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,20 +15,19 @@ import javax.servlet.http.HttpSession;
 import datnt.runsystem.com.dto.UserDTO;
 import datnt.runsystem.com.utils.GetPath;
 
-/**
- * Servlet Filter implementation class AdminPageFilter
- */
-
 public class AdminPageFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
     public AdminPageFilter() {}
 
 	public void destroy() {}
 
-
+	/*
+	 * Lọc các lượt truy cập vào các page của admin 
+	 * 
+	 * @param request 
+	 * @param response 
+	 * @param chain
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
@@ -45,7 +43,7 @@ public class AdminPageFilter implements Filter {
 			return;
 		}
 		
-		//neu user co permission = 0 va truy cap vao cac trang trong student
+		//neu user co permission = 1 va truy cap vao cac trang trong admin
 		if (uri[uri.length - 2].equalsIgnoreCase("admin") && user.getPermission() == 1) {
 			chain.doFilter(request, response); //cho phep truy cap
 		}

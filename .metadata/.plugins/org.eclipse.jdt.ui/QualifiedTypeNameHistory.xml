@@ -42,13 +42,17 @@
 <fullyQualifiedTypeName name="datnt.runsystem.com.utils.DateUtility"/>
 <fullyQualifiedTypeName name="datnt.runsystem.com.dto.SubjectInfoDTO"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-<fullyQualifiedTypeName name="datnt.runsystem.com.utils.GetPath"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="datnt.runsystem.com.utils.ConnectionPool"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="datnt.runsystem.com.model.SubjectModel"/>
 <fullyQualifiedTypeName name="javax.jws.soap.SOAPBinding"/>
-<fullyQualifiedTypeName name="datnt.runsystem.com.utils.StringValidator"/>
 <fullyQualifiedTypeName name="datnt.runsystem.com.utils.HashUtility"/>
+<fullyQualifiedTypeName name="java.security.MessageDigest"/>
+<fullyQualifiedTypeName name="java.nio.charset.StandardCharsets"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
+<fullyQualifiedTypeName name="java.security.NoSuchAlgorithmException"/>
+<fullyQualifiedTypeName name="datnt.runsystem.com.utils.GetPath"/>
+<fullyQualifiedTypeName name="datnt.runsystem.com.utils.StringValidator"/>
 </qualifiedTypeNameHistroy>

@@ -1,3 +1,10 @@
+/*
+ * Class FacultyModel 
+ * 
+ * Chứa các phương thức lấy và cập nhật dữ liệu cho đối tượng 
+ * Khoa từ database KHOA 
+ */
+
 package datnt.runsystem.com.model;
 
 import java.sql.Connection;
@@ -5,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import datnt.runsystem.com.dto.FacultyDTO;
 import datnt.runsystem.com.utils.ConnectionPool;
 
@@ -22,6 +28,11 @@ public class FacultyModel {
 		return instance;
 	}
 	
+	/*
+	 * Lấy danh sách thông tin các khoa đang có trong database 
+	 * 
+	 * @return ArrayList<FacultyDTO>
+	 */
 	public ArrayList<FacultyDTO> getFaculties() {
 		ArrayList<FacultyDTO> faculties = new ArrayList<FacultyDTO>();
 		Connection conn = null;

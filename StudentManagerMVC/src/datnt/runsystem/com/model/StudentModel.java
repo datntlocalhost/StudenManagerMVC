@@ -1,10 +1,16 @@
+/*
+ * Class StudentModel 
+ * 
+ * Chứa các phương thức lấy thông tin đầy đủ của sinh viên 
+ * và cập nhật thông tin lý lích cho sinh viên
+ */
+
 package datnt.runsystem.com.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import datnt.runsystem.com.dto.StudentDTO;
 import datnt.runsystem.com.utils.ConnectionPool;
 
@@ -21,6 +27,12 @@ public class StudentModel {
 		return instance;
 	}
 	
+	/*
+	 * Lấy thông tin đầy đủ của sinh viên dựa vào mã số sinh viên
+	 * 
+	 * @param id           Mã số sinh viên  
+ 	 * @return StudentDTO  Đối tượng StudentDTO
+ 	 */
 	public StudentDTO getStudentInfo(String id) {
 		StudentDTO student = null;
 		Connection conn = null;
@@ -67,6 +79,15 @@ public class StudentModel {
 		return student;
 	}
 	
+	/*
+	 * Cập nhật thông tin lí lịch cho sinh viên
+	 * 
+	 * @param idStudent   Mã số sinh viên
+	 * @param address	  Địa chỉ
+	 * @param phone       Số điện thoại
+	 * @param email       Email 
+	 * @return boolean    True nếu update thành công, false nếu thất bại
+	 */
 	public boolean updateInfo(String idStudent, String address, String phone, String email) {
 		boolean isUpdate = false;
 		Connection conn = null;
