@@ -1,0 +1,81 @@
+/*
+ * Class StringValidator 
+ * 
+ * Chứa các phương thức kiểm tra và xử lý chuỗi input nhận từ request
+ */
+
+package datnt.runsystem.com.utils;
+
+public class StringValidator {
+	
+	public static boolean isUsername(String s) {
+		String regex = "^[a-zA-Z0-9]{0,26}";
+		
+		if (s.matches(regex) && !isNull(s)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean isPassword(String s) {
+		String regex = "^[a-zA-Z0-9!@#$%^&*()]{0,26}";
+		
+		if (s.matches(regex) && !isNull(s)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static float scoresValid(String scores) {
+		if (!isFloat(scores)){
+			return 0;
+		}
+		return Float.parseFloat(scores);
+	}
+	
+	/*
+	 * Kiểm tra chuỗi input có phải là dang float
+	 * 
+	 * @param  s       input
+	 * @return boolean true nếu là dạng float, false nếu không
+	 */
+	public static boolean isFloat(String s) {
+		String regex = "^[0-9.]{0,5}$";
+		
+		if (s.matches(regex) && !isNull(s)) {
+			return true;
+		}
+		return false;
+	}
+	/*
+	 * Kiểm tra chuỗi null
+	 * 
+	 * @param s         Input
+	 * @return boolean  True nếu chuỗi null, false nếu != null 
+	 */
+	public static boolean isNull(String s) {
+		if (s == null || s.trim().length() == 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean isName(String s) {
+		String regex = "^[a-zA-Z ]*$";
+		
+		if (s.matches(regex) && !isNull(s)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean isEmail(String s) {
+		String regex = "";
+		
+		return false;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(isName("   "));
+	}
+}

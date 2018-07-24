@@ -1,7 +1,0 @@
-package datnt.runsystem.com.model;
-
-public class StudentModel {
-	
-	private static StudentModel instance;
-
-}

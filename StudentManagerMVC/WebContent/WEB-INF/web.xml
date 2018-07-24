@@ -4,14 +4,70 @@
   <welcome-file-list>
     <welcome-file>view/home.jsp</welcome-file>
   </welcome-file-list>
-  
   <filter>
-    <filter-name>pageFilter</filter-name>
-    <filter-class>datnt.runsystem.com.controllers.PageFilter</filter-class>
+    <filter-name>StudentPageFilter</filter-name>
+    <filter-class>datnt.runsystem.com.filters.StudentPageFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>pageFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <filter-name>StudentPageFilter</filter-name>
+    <url-pattern>/view/student/*</url-pattern>
   </filter-mapping>
+  <filter>
+    <filter-name>AdminPageFilter</filter-name>
+    <filter-class>datnt.runsystem.com.filters.AdminPageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminPageFilter</filter-name>
+    <url-pattern>/view/admin/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/ctl/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateInfo</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.UpdateInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateInfo</servlet-name>
+    <url-pattern>/ctl/updateinfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentInfo</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.StudentInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentInfo</servlet-name>
+    <url-pattern>/ctl/studentinfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddStudent</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.AddStudent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddStudent</servlet-name>
+    <url-pattern>/ctl/addstudent</url-pattern>
+  </servlet-mapping>
   
+  <servlet>
+    <servlet-name>RegisterSubject</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.RegisterSubject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterSubject</servlet-name>
+    <url-pattern>/ctl/registersubject</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>UpdateScores</servlet-name>
+    <servlet-class>datnt.runsystem.com.controllers.UpdateScores</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateScores</servlet-name>
+    <url-pattern>/ctl/updatescores</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,3 +1,9 @@
+/*
+ * Class ConnectionPool
+ * 
+ * Chứa các phương thức khởi tạo một pool và get connection từ pool
+ */
+
 package datnt.runsystem.com.utils;
 
 import java.sql.Connection;
@@ -18,6 +24,9 @@ public class ConnectionPool {
 	private DataSource dataSource = null;
 	private GenericObjectPool<Connection> gPool = null;
 	
+	/*
+	 * Construction khởi tạo các giá trị cần thiết cho pool
+	 */
 	@SuppressWarnings("unused")
 	private ConnectionPool() {
 		String username = PropertyReader.getValue("username");
@@ -25,7 +34,7 @@ public class ConnectionPool {
 		String dbName   = PropertyReader.getValue("dbname");
 		String hostname = PropertyReader.getValue("hostname");
 		String port     = PropertyReader.getValue("port");
-		int    maxActiv = Integer.parseInt(PropertyReader.getValue("maxactive"));
+		int    maxActiv = Integer.parseInt(PropertyReader.getValue("maxactive")); //số lượng connection tối đa
 		
 		String url      = replace(PropertyReader.getValue("url"), hostname, port, dbName);
 		try {
@@ -51,6 +60,12 @@ public class ConnectionPool {
 		return instance;
 	}
 
+	/*
+	 * get connection từ pool 
+	 * 
+	 * @return Connection 
+	 * @throws SQLException
+	 */
 	public Connection getConnection() throws SQLException {
 		if (this.dataSource != null) {
 			return this.dataSource.getConnection();
@@ -58,6 +73,13 @@ public class ConnectionPool {
 		return null;
 	}
 	
+	/*
+	 * replace các vị trí chứa {0} trong chuỗi thành các string input 
+	 * 
+	 * @param s        String ban đầu 
+	 * @param args     Mãng các string
+	 * @return String  Chuỗi sau khi replace
+	 */
 	private static String replace(String s, String... args) {
 		int i;
 		

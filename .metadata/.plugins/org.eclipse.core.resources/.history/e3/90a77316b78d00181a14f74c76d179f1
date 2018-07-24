@@ -1,0 +1,42 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="datnt.runsystem.com.dto.SubjectDTO"%>
+<%@page import="datnt.runsystem.com.dto.StudentDTO"%>
+<%@page import="datnt.runsystem.com.model.StudentModel"%>
+<%@page import="datnt.runsystem.com.model.SubjectModel"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Xem thong tin sinh vien</title>
+</head>
+<body>
+	<%@ include file="../header.jsp" %>
+  	
+  	<form action="" method="post">
+    	<label>Mã số sinh viên:</label>
+    	<input type="text" name="idStudent" placeholder="Nhập MSSV">
+    	<input type="submit" name="submit" value="Xem">
+  	</form>
+  	
+  	<%
+ 		String idStudent = request.getParameter("idStudent");
+  		StudentDTO student = null;
+  		ArrayList<SubjectDTO> subjects = null;
+  	
+  		if (!idStudent.isEmpty()) {
+  			student = StudentModel.getInstance().getStudentInfo(idStudent);
+  			subjects = SubjectModel.getInstance().getSubject(idStudent);
+  		} 
+  	%>	
+  	
+  	<div class="login-bg">
+    	<div class="layer">
+    		
+    	</div>
+    </div>	
+  	  
+  	<%@ include file="../footer.jsp" %>
+</body>
+</html>

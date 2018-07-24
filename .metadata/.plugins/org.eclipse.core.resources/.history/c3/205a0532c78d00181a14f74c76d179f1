@@ -1,0 +1,8 @@
+package datnt.runsystem.com.dto;
+
+public class FacultyDTO {
+	
+	private String idFaculty;
+	private String nameFaculty;
+
+}

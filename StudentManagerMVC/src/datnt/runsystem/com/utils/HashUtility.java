@@ -5,13 +5,15 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import datnt.runsystem.com.dto.UserDTO;
-import datnt.runsystem.com.model.UserModel;
-
 public class HashUtility {
 	
+	/*
+	 * Hàm hash một chuỗi String đầu vào sau đó trả về chuỗi String hash
+	 * 
+	 * @param s        Chuỗi input
+	 * @return String  Chuỗi hash
+	 */
 	public static String hash(String s) {
-		
 		/*MessageDigest md5;
 		try {
 			md5 = MessageDigest.getInstance("MD5");
@@ -22,11 +24,4 @@ public class HashUtility {
 		}*/
 		return s;
 	}
-	
-	/*Test
-	public static void main(String[] args) {
-			
-		System.out.println(hash("123"));
-	}
-    */
 }

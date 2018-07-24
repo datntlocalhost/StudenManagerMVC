@@ -1,0 +1,77 @@
+/*
+ * Class UserModel 
+ * 
+ * Chứa các phương thức lấy thông tin tài khoản từ database TAIKHOAN 
+ */
+package datnt.runsystem.com.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import datnt.runsystem.com.dto.UserDTO;
+import datnt.runsystem.com.utils.ConnectionPool;
+import datnt.runsystem.com.utils.HashUtility;
+import datnt.runsystem.com.utils.StringValidator;
+
+public class UserModel {
+	
+	private static UserModel instance;
+	
+	private UserModel() {}
+	
+	public static UserModel getInstance() {
+		if (instance == null) {
+			instance = new UserModel();
+		}
+		return instance;
+	}
+	
+	/*
+	 * Lấy thông tin tài khoản.
+	 * 
+	 * @param username 
+	 * @param password
+	 * 
+	 * @return UserDTO  Trả về một đối tượng UserDTO 
+	 * */
+	public UserDTO getUser(String username, String password) {
+		UserDTO userDTO            = null;
+		Connection conn            = null;
+		ResultSet  result          = null;
+		PreparedStatement preState = null;
+		
+		//Nếu chuỗi input username hoặc password không hợp lệ return null
+		if (!StringValidator.isUsername(username)) {
+			return userDTO;
+		}
+		String sql = "SELECT * FROM TAIKHOAN WHERE TAIKHOAN=? AND MATKHAU=?;";
+		try {
+			conn     = ConnectionPool.getInstance().getConnection();
+			preState = conn.prepareStatement(sql);
+			preState.setString(1, username);
+			preState.setString(2, HashUtility.hash(password));
+			result   = preState.executeQuery();
+			if (result.next()) {
+				userDTO = new UserDTO(username, result.getString("MATKHAU"), result.getInt("PERMISSION"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (result != null) {
+					result.close();
+				}
+				if (preState != null) {
+					preState.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return userDTO;
+	}
+}

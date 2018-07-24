@@ -1,3 +1,8 @@
+/*
+ * Class UserModel 
+ * 
+ * Chứa các phương thức lấy thông tin tài khoản từ database TAIKHOAN 
+ */
 package datnt.runsystem.com.model;
 
 import java.sql.Connection;
@@ -22,14 +27,22 @@ public class UserModel {
 		return instance;
 	}
 	
-	public UserDTO checkLogin(String username, String password) {
+	/*
+	 * Lấy thông tin tài khoản.
+	 * 
+	 * @param username 
+	 * @param password
+	 * 
+	 * @return UserDTO  Trả về một đối tượng UserDTO 
+	 * */
+	public UserDTO getUser(String username, String password) {
 		UserDTO userDTO            = null;
 		Connection conn            = null;
 		ResultSet  result          = null;
 		PreparedStatement preState = null;
 		
 		//Nếu chuỗi input username hoặc password không hợp lệ return null
-		if (!StringValidator.usernameValid(username)) {
+		if (!StringValidator.isUsername(username) && !StringValidator.isPassword(password)) {
 			return userDTO;
 		}
 		String sql = "SELECT * FROM TAIKHOAN WHERE TAIKHOAN=? AND MATKHAU=?;";

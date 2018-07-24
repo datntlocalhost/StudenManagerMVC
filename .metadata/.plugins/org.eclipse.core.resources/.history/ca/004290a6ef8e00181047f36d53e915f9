@@ -1,0 +1,59 @@
+package datnt.runsystem.com.controllers;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import datnt.runsystem.com.dto.UserDTO;
+import datnt.runsystem.com.model.SubjectModel;
+
+
+public class RegisterSubject extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public RegisterSubject() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doGet");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/student/registersubject.jsp");
+		rd.forward(request, response);
+	}
+
+	/*
+	 * Nhận thông tin các môn học đăng kí từ request 
+	 * xử lý loại bỏ các môn học đã đăng kí trước đó 
+	 * nhưng vẫn có trong danh sách đăng kí hiện tại
+	 * sau đó insert vào database và hiển thị thông tin đến user
+	 * 
+	 * @param request 
+	 * @param response
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String[] subjects   = request.getParameterValues("subjects"); //các môn đăng kí nhận từ request 
+		HttpSession session = request.getSession();
+		ArrayList<String> subs = new ArrayList<String>();             //chứa các môn chưa đăng ký trước đó 
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		
+		if (user != null) {
+			//Lấy các môn học sinh viên đã đăng kí trước đó từ database 
+			ArrayList<String> registedSubject = SubjectModel.getInstance().registedSubject(user.getUsername());
+			
+			for (int i = 0; i < subjects.length; i++) {
+				if (!registedSubject.contains(subjects[i])) {
+					subs.add(subjects[i]);
+				}
+			}
+			SubjectModel.getInstance().registerSubject(user.getUsername(), subs);
+		}
+		
+		request.setAttribute("alehap", subs);
+		doGet(request, response);
+	}
+
+}

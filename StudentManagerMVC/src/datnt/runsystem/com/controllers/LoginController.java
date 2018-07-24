@@ -1,8 +1,13 @@
+/*
+ * Class LoginController 
+ * 
+ * Nhận các request từ user liên quan đến Login 
+ * Controller cho các page có login và logout 
+ */
 package datnt.runsystem.com.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,9 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import datnt.runsystem.com.dto.UserDTO;
 import datnt.runsystem.com.model.UserModel;
+import datnt.runsystem.com.utils.HashUtility;
+import datnt.runsystem.com.utils.StringValidator;
 
-
-@WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,9 +25,13 @@ public class LoginController extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Begin doGet LoginController");
-		
+    /*
+     * Thực thi request login và logout 
+     * 
+     * @param request
+     * @param response
+     */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String      operation = request.getParameter("operation");
 		HttpSession session   = request.getSession();
 		
@@ -30,7 +39,6 @@ public class LoginController extends HttpServlet {
 			if (operation.equalsIgnoreCase("logout")) {
 				session.invalidate();
 				response.sendRedirect(request.getContextPath() + "/view/home.jsp");
-				System.out.println("End doGet LoginController");
 				return;
 			}
 		} else {
@@ -40,27 +48,36 @@ public class LoginController extends HttpServlet {
 		}
 	}
 
+	/*
+	 * Nhận request login từ user, kiểm tra hợp lệ và set session.
+	 * 
+	 * @param request 
+	 * @param response 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("Begin doPost LoginController");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		
-		UserDTO userDTO = UserModel.getInstance().checkLogin(username, password);
+		UserDTO userDTO = null;
 		
+		if (StringValidator.isUsername(username) && StringValidator.isPassword(password)) {
+			userDTO = UserModel.getInstance().getUser(username, password);
+		}
+		
+		//Nếu tài khoản tồn tại hoặc hợp lệ 
 		if (userDTO != null) {
 			UserDTO userSession = (UserDTO) session.getAttribute("user");
+			//set user session nếu chưa có
 			if (userSession == null) {
 				session.setAttribute("user", userDTO);
 				session.setMaxInactiveInterval(15*60);
 			}
+			//chuyển hướng đến trang home
 			response.sendRedirect(request.getContextPath() + "/view/home.jsp");
-		} else {
+		} else { //Tài khoản ko tồn tại hoặc không hợp lệ
 			response.sendRedirect(request.getContextPath() + "/view/login.jsp");
 		}
-		
-		System.out.println("End doPost LoginController");
 	}
 
 }
