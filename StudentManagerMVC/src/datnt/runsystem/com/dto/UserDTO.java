@@ -1,3 +1,8 @@
+/*
+ * Class UserDTO
+ * 
+ * Đối tượng tài khoản sinh viên
+ */
 package datnt.runsystem.com.dto;
 
 public class UserDTO {

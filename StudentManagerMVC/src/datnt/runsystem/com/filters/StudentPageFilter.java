@@ -21,7 +21,13 @@ public class StudentPageFilter implements Filter {
 
 	public void destroy() {}
 
-	
+	/*
+	 * Lọc các truy cập vào các page trong student 
+	 * 
+	 * @param request
+	 * @param response
+	 * @param chain 
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {	
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;

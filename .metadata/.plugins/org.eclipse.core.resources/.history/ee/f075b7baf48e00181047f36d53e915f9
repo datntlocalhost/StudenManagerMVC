@@ -1,0 +1,97 @@
+package datnt.runsystem.com.dto;
+
+public class SubjectInfoDTO {
+	
+	private String idSubject;        //mã môn học
+	private String nameSubject;      //tên môn học
+	private String year;             //năm học
+	private int    semester;         //học kì
+	private float  qtScores;         //điểm quá trình
+	private float  thScores;         //điểm thực hành
+	private float  gkScores;         //điểm giữa kỳ
+	private float  ckScores;         //điểm cuối kỳ 
+	
+	public SubjectInfoDTO(String idSubject, String nameSubject, String year, int semester) {
+		this.idSubject = idSubject;
+		this.nameSubject = nameSubject;
+		this.year = year;
+		this.semester = semester;
+	}
+
+	public SubjectInfoDTO(String idSubject, String nameSubject, String year, int semester, float qtScores, float thScores,
+			float gkScores, float ckScores) {
+		super();
+		this.idSubject = idSubject;
+		this.nameSubject = nameSubject;
+		this.year = year;
+		this.semester = semester;
+		this.qtScores = qtScores;
+		this.thScores = thScores;
+		this.gkScores = gkScores;
+		this.ckScores = ckScores;
+	}
+
+	public String getIdSubject() {
+		return idSubject;
+	}
+
+	public void setIdSubject(String idSubject) {
+		this.idSubject = idSubject;
+	}
+
+	public String getNameSubject() {
+		return nameSubject;
+	}
+
+	public void setNameSubject(String nameSubject) {
+		this.nameSubject = nameSubject;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+
+	public float getQtScores() {
+		return qtScores;
+	}
+
+	public void setQtScores(float qtScores) {
+		this.qtScores = qtScores;
+	}
+
+	public float getThScores() {
+		return thScores;
+	}
+
+	public void setThScores(float thScores) {
+		this.thScores = thScores;
+	}
+
+	public float getGkScores() {
+		return gkScores;
+	}
+
+	public void setGkScores(float gkScores) {
+		this.gkScores = gkScores;
+	}
+
+	public float getCkScores() {
+		return ckScores;
+	}
+
+	public void setCkScores(float ckScores) {
+		this.ckScores = ckScores;
+	}
+}

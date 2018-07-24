@@ -1,0 +1,102 @@
+/*
+ * Class ConnectionPool
+ * 
+ * Chứa các phương thức khởi tạo một pool và get connection từ pool
+ */
+
+package datnt.runsystem.com.utils;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp.ConnectionFactory;
+import org.apache.commons.dbcp.DriverManagerConnectionFactory;
+import org.apache.commons.dbcp.PoolableConnectionFactory;
+import org.apache.commons.dbcp.PoolingDataSource;
+import org.apache.commons.pool.impl.GenericObjectPool;
+
+public class ConnectionPool {
+	
+	private static ConnectionPool instance;
+	
+	private DataSource dataSource = null;
+	private GenericObjectPool<Connection> gPool = null;
+	
+	/*
+	 * Construction khởi tạo các giá trị cần thiết cho pool
+	 */
+	@SuppressWarnings("unused")
+	private ConnectionPool() {
+		String username = PropertyReader.getValue("username");
+		String password = PropertyReader.getValue("password");
+		String dbName   = PropertyReader.getValue("dbname");
+		String hostname = PropertyReader.getValue("hostname");
+		String port     = PropertyReader.getValue("port");
+		int    maxActiv = Integer.parseInt(PropertyReader.getValue("maxactive")); //số lượng connection tối đa
+		
+		String url      = replace(PropertyReader.getValue("url"), hostname, port, dbName);
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			this.gPool = new GenericObjectPool<Connection>();
+			this.gPool.setMaxActive(maxActiv);
+			ConnectionFactory connectionFactory = 
+					new DriverManagerConnectionFactory(url, username, password);
+			
+			PoolableConnectionFactory pcf = 
+					new PoolableConnectionFactory(connectionFactory, gPool, null, null, false, true);
+			
+			this.dataSource = new PoolingDataSource(this.gPool);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static ConnectionPool getInstance() {
+		if (instance == null) {
+			instance = new ConnectionPool();
+		}
+		return instance;
+	}
+
+	/*
+	 * get connection từ pool 
+	 * 
+	 * @return Connection 
+	 * @throws SQLException
+	 */
+	public Connection getConnection() throws SQLException {
+		if (this.dataSource != null) {
+			return this.dataSource.getConnection();
+		}
+		return null;
+	}
+	
+	/*
+	 * replace các vị trí chứa {0} trong chuỗi thành các string input 
+	 * 
+	 * @param s        String ban đầu 
+	 * @param args     Mãng các string
+	 * @return String  Chuỗi sau khi replace*/
+	private static String replace(String s, String... args) {
+		int i;
+		
+		for (i = 0; i < args.length; i++) {
+			s = s.replace("{" + i + "}", args[i]);
+		}
+		return s;
+	}
+	
+	/*
+	public static void main(String[] args) {
+		String username = PropertyReader.getValue("username");
+		String password = PropertyReader.getValue("password");
+		String dbName   = PropertyReader.getValue("dbname");
+		String hostname = PropertyReader.getValue("hostname");
+		String port     = PropertyReader.getValue("port");
+		
+		String url      = replace(PropertyReader.getValue("url"), hostname, port, dbName);
+		System.out.println(url);
+	}*/
+}

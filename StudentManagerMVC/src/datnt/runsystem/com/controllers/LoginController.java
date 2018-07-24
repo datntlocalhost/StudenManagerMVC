@@ -1,8 +1,13 @@
+/*
+ * Class LoginController 
+ * 
+ * Nhận các request từ user liên quan đến Login 
+ * Controller cho các page có login và logout 
+ */
 package datnt.runsystem.com.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import datnt.runsystem.com.dto.UserDTO;
 import datnt.runsystem.com.model.UserModel;
 import datnt.runsystem.com.utils.HashUtility;
+import datnt.runsystem.com.utils.StringValidator;
 
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,10 +56,14 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
-		String password = HashUtility.hash(request.getParameter("password"));
+		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		
-		UserDTO userDTO = UserModel.getInstance().getUser(username, password);
+		UserDTO userDTO = null;
+		
+		if (StringValidator.isUsername(username) && StringValidator.isPassword(password)) {
+			userDTO = UserModel.getInstance().getUser(username, password);
+		}
 		
 		//Nếu tài khoản tồn tại hoặc hợp lệ 
 		if (userDTO != null) {

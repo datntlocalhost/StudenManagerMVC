@@ -1,43 +1,42 @@
+/*
+ * Class UpdateInfo 
+ * 
+ * Controller cho page /student/updateinfo.jsp
+ */
 package datnt.runsystem.com.controllers;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import datnt.runsystem.com.dto.UserDTO;
 import datnt.runsystem.com.model.StudentModel;
 import datnt.runsystem.com.utils.GetPath;
+import datnt.runsystem.com.utils.StringValidator;
 
-/**
- * Servlet implementation class UpdateInfo
- */
 public class UpdateInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UpdateInfo() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher(GetPath.UPDATE_INFO_VIEW);
 		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	/*
+	 * Nhận thông tin cập nhật thông tin sinh viên từ request 
+	 * sau đó thực hiện việc cập nhật thông tin của sinh viên 
+	 * vào database và hiện thị kết quả cho user
+	 * 
+	 * @param request
+	 * @param response 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String address = request.getParameter("address");
@@ -47,7 +46,7 @@ public class UpdateInfo extends HttpServlet {
 		
 		UserDTO user = (UserDTO) session.getAttribute("user");
 		
-		if (user == null) {
+		if (user == null || !StringValidator.isEmail(email) || !StringValidator.isPhone(phone)) {
 			return;
 		}
 		

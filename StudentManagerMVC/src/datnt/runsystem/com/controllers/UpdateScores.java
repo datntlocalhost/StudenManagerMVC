@@ -1,19 +1,20 @@
+/*
+ * Class UpdateScores 
+ * 
+ * Controller cho page /admin/updatescotes.jsp
+ */
 package datnt.runsystem.com.controllers;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import datnt.runsystem.com.dto.SubjectInfoDTO;
 import datnt.runsystem.com.model.SubjectModel;
 import datnt.runsystem.com.utils.GetPath;
 import datnt.runsystem.com.utils.StringValidator;
-
 
 public class UpdateScores extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,13 @@ public class UpdateScores extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-
+	/*
+	 * Nhận thông tin sinh viên, điểm từ request 
+	 * cập nhật thông tin vào database 
+	 * 
+	 * @param request 
+	 * @param response
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idStudent = request.getParameter("idStudent");
 		String idSubject = request.getParameter("idSubject");

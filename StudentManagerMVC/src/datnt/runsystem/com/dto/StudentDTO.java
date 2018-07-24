@@ -1,3 +1,8 @@
+/*
+ * Class StudentDTO
+ * 
+ * Đối tượng Sinh vien
+ */
 package datnt.runsystem.com.dto;
 
 public class StudentDTO {

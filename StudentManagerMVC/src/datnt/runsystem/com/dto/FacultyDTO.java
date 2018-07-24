@@ -1,3 +1,9 @@
+/*
+ * Class FacultyDTO
+ * 
+ * Đối tượng Khoa 
+ */
+
 package datnt.runsystem.com.dto;
 
 public class FacultyDTO {
