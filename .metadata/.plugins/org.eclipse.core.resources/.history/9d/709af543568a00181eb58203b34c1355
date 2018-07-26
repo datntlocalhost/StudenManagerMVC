@@ -1,7 +1,0 @@
-package datnt.runsystem.com.features.login;
-
-public class UserModel {
-	
-	private String username;
-
-}

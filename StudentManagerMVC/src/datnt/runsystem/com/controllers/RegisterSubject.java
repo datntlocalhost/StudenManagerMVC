@@ -49,8 +49,8 @@ public class RegisterSubject extends HttpServlet {
 			ArrayList<String> registedSubject = SubjectModel.getInstance().registedSubject(user.getUsername());
 			
 			for (int i = 0; i < subjects.length; i++) {
-				if (!registedSubject.contains(subjects[i])) { //Nếu môn đăng kí hiện tại chưa có trong registedSubject
-					subs.add(subjects[i]);                    //add vào danh sách chưa đăng ký trước đó 
+				if (!registedSubject.contains(subjects[i])) {   //Nếu môn đăng kí hiện tại chưa có trong registedSubject
+					subs.add(subjects[i]);                      //add vào danh sách chưa đăng ký trước đó 
 				}
 			}
 			//Thực hiện insert vào database 
@@ -60,5 +60,4 @@ public class RegisterSubject extends HttpServlet {
 		request.setAttribute("alehap", subs);
 		doGet(request, response);
 	}
-
 }

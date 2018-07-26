@@ -7,6 +7,7 @@
 package datnt.runsystem.com.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datnt.runsystem.com.dto.StudentDTO;
+import datnt.runsystem.com.dto.SubjectInfoDTO;
+import datnt.runsystem.com.model.StudentModel;
+import datnt.runsystem.com.model.SubjectModel;
 import datnt.runsystem.com.utils.GetPath;
+import datnt.runsystem.com.utils.StringValidator;
 
 public class StudentInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,10 +35,19 @@ public class StudentInfo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idStudent = request.getParameter("idStudent");
-		if (idStudent != null) {
-			response.sendRedirect("studentinfo?idStudent=" + idStudent);
+		String     idStudent = request.getParameter("idStudent");
+		StudentDTO student   = null;
+		ArrayList<SubjectInfoDTO> subjects = null;
+		
+		if (StringValidator.isUsername(idStudent)) {
+			if (idStudent != null) {
+				student  = StudentModel.getInstance().getStudentInfo(idStudent);
+	  			subjects = SubjectModel.getInstance().getSubjectInfo(idStudent);
+			}
 		}
+		request.setAttribute("student", student);
+		request.setAttribute("subjects", subjects);
+		doGet(request, response);
 	}
 
 }

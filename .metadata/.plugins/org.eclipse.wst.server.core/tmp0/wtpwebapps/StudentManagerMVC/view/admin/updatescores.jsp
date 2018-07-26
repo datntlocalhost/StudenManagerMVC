@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Cập nhật điểm</title>
 </head>
 <body>
     <%@ include file="../header.jsp" %>
@@ -21,12 +21,13 @@
     	<input type="submit" name="submit" value="Cập nhật">
     </form>
     
-    <% SubjectInfoDTO subjectInfo = (SubjectInfoDTO) request.getAttribute("subjectinfo"); 
-       String message = (String) request.getAttribute("message");
+    <% 
+    	SubjectInfoDTO subjectInfo = (SubjectInfoDTO) request.getAttribute("subjectinfo"); 
+    	String message = (String) request.getAttribute("message");
        
-       if ("success".equalsIgnoreCase(message)) {
+        if ("success".equalsIgnoreCase(message)) {
     	   out.print("<h2>Cập nhật thành công </h2>");
-       }
+        }
     %>	
     	 <%if (subjectInfo != null) {%>
     		 <h2>Thông tin điểm hiện tại</h2>
