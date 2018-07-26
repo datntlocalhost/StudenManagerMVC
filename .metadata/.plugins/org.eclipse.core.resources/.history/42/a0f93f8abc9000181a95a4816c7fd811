@@ -1,0 +1,46 @@
+/*
+ * Class StudentInfo 
+ * 
+ * Controller cho page admin/studentinfo.jsp
+ */
+
+package datnt.runsystem.com.controllers;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import datnt.runsystem.com.dto.StudentDTO;
+import datnt.runsystem.com.utils.GetPath;
+import datnt.runsystem.com.utils.StringValidator;
+
+public class StudentInfo extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public StudentInfo() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(GetPath.STUDENT_INFO_VIEW);
+		rd.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String     idStudent = request.getParameter("idStudent");
+		StudentDTO student   = null;
+		if (StringValidator.isUsername(idStudent)) {
+			if (idStudent != null) {
+				
+				response.sendRedirect("studentinfo?idStudent=" + idStudent);
+			}
+		} else {
+			response.sendRedirect("studentinfo");
+		}
+	}
+
+}

@@ -21,14 +21,8 @@
   	</form>
   	
   	<%
- 		String idStudent = request.getParameter("idStudent");
-  		StudentDTO student = null;
-  		ArrayList<SubjectInfoDTO> subjects = null;
-  	
-  		if (idStudent != null) {
-  			student  = StudentModel.getInstance().getStudentInfo(idStudent);
-  			subjects = SubjectModel.getInstance().getSubjectInfo(idStudent);
-  		} 
+  		StudentDTO student = (StudentDTO) request.getAttribute("student");
+  		ArrayList<SubjectInfoDTO> subjects = (ArrayList<SubjectInfoDTO>) request.getAttribute("subjects");
   	%>	
   	
   	<div class="login-bg">
